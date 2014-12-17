@@ -1,0 +1,76 @@
+{
+    "title": "NoClick",
+    "id": "jid1-qcmz2yMJ3oOBpA@jetpack",
+    "description": "A way to save clicks on any website by allowing a user to harness hover functionality for TextArea's and Input fields.",
+    "author": "Jared Null",
+    "contributors": ["Don", "Dhaval Katrodiya", "co222", "tumpio", "Doesnt Matter", "Faktor12"],
+    "license": "GPLv3",
+    "version": "2.0",
+    "homepage": "http://www.jarednull.com",
+    "icon": "img\\blueswip48.png",
+    "icon64": "img\\blueswip64.png",
+    "permissions": {
+        "private-browsing": true
+    },
+
+    "preferences": [{
+            "name": "colorenable",
+            "title": "Enable Highlight Color Boarder",
+            "description": "Enabe color highlighting for input and textarea tags",
+            "type": "bool",
+            "value": true
+        }, {
+            "name": "boardercolor",
+            "type": "color",
+            "title": "Boarder Color Selection",
+            "description": "Select a boarder color for 'input' and 'textarea' tags",
+            "value": "#6a5acd"
+        }, {
+            "hidden": true,
+            "name": "boardercolorenable",
+            "title": "Enable Highlight Color Boarder",
+            "description": "Enabe color highlighting for input and textarea tags",
+            "type": "bool",
+            "value": true
+        }, {
+            "hidden": true,
+            "name": "BackGroundColor",
+            "type": "color",
+            "title": "Background Color Selection",
+            "description": "Select a background color for 'input' and 'textarea' tags",
+            "value": "#6a5acd"
+        }, {
+            "hidden": true,
+            "name": "ColorTemplate",
+            "type": "menulist",
+            "title": "Choose a Color template",
+            "value": 0,
+            "options": [{
+                "value": "1",
+                "label": "Default"
+            }, {
+                "value": "2",
+                "label": "YellowJacket"
+            }, {
+                "value": "3",
+                "label": "1337H4x0r"
+            }, {
+                "value": "4",
+                "label": "BloodOrange"
+            }, {
+                "value": "5",
+                "label": "DragonSlayer"
+            }, {
+                "value": "0",
+                "label": "None"
+            }]
+        }, {
+            "hidden": true,
+            "type": "control",
+            "label": "Save Settings",
+            "name": "SaveSettings",
+            "title": "Save All Settings"
+        }
+
+    ]
+}
