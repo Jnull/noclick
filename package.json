@@ -1,11 +1,11 @@
 {
     "title": "NoClick",
     "id": "jid1-qcmz2yMJ3oOBpA@jetpack",
-    "description": "A way to save clicks on any website by allowing a user to harness hover functionality for TextArea's and Input fields.",
+    "description": "A way to save clicks on any website by allowing a user to harness hover functionality for all user input fields.",
     "author": "Jared Null",
     "contributors": ["Don", "Dhaval Katrodiya", "co222", "tumpio", "Doesnt Matter", "Faktor12"],
     "license": "GPLv3",
-    "version": "2.0",
+    "version": "2.5",
     "homepage": "http://www.jarednull.com",
     "icon": "img\\blueswip48.png",
     "icon64": "img\\blueswip64.png",
@@ -14,36 +14,91 @@
     },
 
     "preferences": [{
-            "name": "colorenable",
-            "title": "Enable Highlight Color Boarder",
-            "description": "Enabe color highlighting for input and textarea tags",
-            "type": "bool",
-            "value": true
-        }, {
-            "name": "boardercolor",
+            "name": "font_text_color",
             "type": "color",
-            "title": "Boarder Color Selection",
-            "description": "Select a boarder color for 'input' and 'textarea' tags",
+            "title": "Text Color",
+            "description": "Please choose a color.",
+            "value": "#6a5acd "
+        }, {
+            "name": "font_text_color_preference",
+            "type": "bool",
+            "title": "Highlight Boarder",
+            "description": "Enable element boarder highlighting.",
+            "value": false
+        }, {
+            "name": "element_background_color",
+            "type": "color",
+            "title": "Background color",
+            "description": "Please choose a color.",
             "value": "#6a5acd"
         }, {
-            "hidden": true,
-            "name": "boardercolorenable",
-            "title": "Enable Highlight Color Boarder",
-            "description": "Enabe color highlighting for input and textarea tags",
+            "name": "element_background_color_preference",
             "type": "bool",
+            "title": "Highlight Boarder",
+            "description": "Enable element boarder highlighting.",
+            "value": false
+        }, {
+            "name": "element_boarder_highlight_color_preference",
+            "type": "color",
+            "title": "Select element boarder color",
+            "description": "Please choose a color.",
+            "value": "#6a5acd"
+        }, {
+            "name": "element_boarder_highlight_preference",
+            "type": "bool",
+            "title": "Highlight Boarder",
+            "description": "Enable element boarder highlighting.",
+            "value": true
+        }, {
+            "name": "mouseover_selected_text",
+            "type": "bool",
+            "title": "Select Previously Selected Text OnMouseOver",
+            "description": "Enable the previously selected text option.",
+            "value": true
+        }, {
+            "name": "all_text_select_mouseout",
+            "type": "bool",
+            "title": "Select All Text on MouseOut",
+            "description": "Enable selecting all text on mouseout.",
+            "value": true
+        }, {
+            "name": "default_cursor_postion",
+            "type": "radio",
+            "title": "Default Cursor Selection",
+            "description": "Where do you always want to place the cursor? ",
+            "value": "Alternate",
+            "options": [{
+                "value": "Begin",
+                "label": "Beginning of Text"
+            }, {
+                "value": "Alternate",
+                "label": "Alternate Between Beginning and End"
+            }, {
+                "value": "End",
+                "label": "End of text"
+            }, {
+                "value": "off",
+                "label": "Disable"
+            }]
+        }, {
+            "hidden": true,
+            "type": "bool",
+            "name": "boardercolorenable",
+            "title": "Enable Element Text Color",
+            "description": "Enable color highlighting for all input elements.",
             "value": true
         }, {
             "hidden": true,
             "name": "BackGroundColor",
             "type": "color",
-            "title": "Background Color Selection",
-            "description": "Select a background color for 'input' and 'textarea' tags",
+            "title": "Element Text Color",
+            "description": "Select a background color for all input elements.",
             "value": "#6a5acd"
         }, {
             "hidden": true,
             "name": "ColorTemplate",
             "type": "menulist",
-            "title": "Choose a Color template",
+            "title": "Color Template Combinations for Element Boarders and Element Text",
             "value": 0,
             "options": [{
                 "value": "1",
@@ -67,7 +122,7 @@
         }, {
             "hidden": true,
             "type": "control",
-            "label": "Save Settings",
+            "label": "Save All Settings",
             "name": "SaveSettings",
             "title": "Save All Settings"
         }
