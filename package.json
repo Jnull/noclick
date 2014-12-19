@@ -16,43 +16,43 @@
     "preferences": [{
             "name": "font_text_color",
             "type": "color",
-            "title": "Text Color",
+            "title": "Text Color Selection",
             "description": "Please choose a color.",
-            "value": "#6a5acd "
+            "value": "#CC0000"
         }, {
             "name": "font_text_color_preference",
             "type": "bool",
-            "title": "Highlight Boarder",
-            "description": "Enable element boarder highlighting.",
-            "value": false
+            "title": "Enable Highlighting Font-Color",
+            "description": "Enable font text highlighting.",
+            "value": true
         }, {
             "name": "element_background_color",
             "type": "color",
-            "title": "Background color",
-            "description": "Please choose a color.",
-            "value": "#6a5acd"
+            "title": "Background Color Selection",
+            "description": "Please choose a Color.",
+            "value": "#33FFFF"
         }, {
             "name": "element_background_color_preference",
             "type": "bool",
-            "title": "Highlight Boarder",
-            "description": "Enable element boarder highlighting.",
+            "title": "Enable Highlighting Background",
+            "description": "Enable element background highlighting.",
             "value": false
         }, {
             "name": "element_boarder_highlight_color_preference",
             "type": "color",
-            "title": "Select element boarder color",
+            "title": "Boarder Color Selection",
             "description": "Please choose a color.",
             "value": "#6a5acd"
         }, {
             "name": "element_boarder_highlight_preference",
             "type": "bool",
-            "title": "Highlight Boarder",
+            "title": "Enable Highlighting Boarder",
             "description": "Enable element boarder highlighting.",
             "value": true
         }, {
             "name": "mouseover_selected_text",
             "type": "bool",
-            "title": "Select Previously Selected Text OnMouseOver",
+            "title": "clicking saves exactly clicked text as text selection until clicked or mousescroll again",
             "description": "Enable the previously selected text option.",
             "value": true
         }, {
@@ -61,7 +61,15 @@
             "title": "Select All Text on MouseOut",
             "description": "Enable selecting all text on mouseout.",
             "value": true
-        }, {
+        },
+		{
+            "name": "saved_cursor_postion_on_type",
+            "type": "bool",
+            "title": "last cursor position is user's last typed character",
+            "description": "Save last character as last cursor position..",
+            "value": true
+        },
+		{
             "name": "default_cursor_postion",
             "type": "radio",
             "title": "Default Cursor Selection",
