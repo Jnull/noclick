@@ -31,27 +31,46 @@ self.port.on("send_all_prefrences_to_user", function(
 			xcursor_postion_selected == "Alternate" || 
 			xcursor_postion_selected == "off" ){
 			ncsel = 0;
+			if (document.activeElement) {
 			document.activeElement.blur()
+			}
 			} 
 			
 	for (var noclick_counter10 = 0; noclick_counter10 < noclick_inputtag.length; noclick_counter10++) {
-			   if (noclick_inputtag[noclick_counter10].type != "submit") {
+			   if (noclick_inputtag[noclick_counter10].type != "submit" || 
+			   noclick_inputtag[noclick_counter10].type != "button" || 
+				noclick_inputtag[noclick_counter10].type != "checkbox" || 
+				noclick_inputtag[noclick_counter10].type != "color" || 
+				noclick_inputtag[noclick_counter10].type != "date" || 
+				noclick_inputtag[noclick_counter10].type != "datetime" || 
+				noclick_inputtag[noclick_counter10].type != "datetime-local" || 
+				noclick_inputtag[noclick_counter10].type != "email" || 
+				noclick_inputtag[noclick_counter10].type != "file" || 
+				noclick_inputtag[noclick_counter10].type != "hidden" || 
+				noclick_inputtag[noclick_counter10].type != "image" || 
+				noclick_inputtag[noclick_counter10].type != "month" || 
+				noclick_inputtag[noclick_counter10].type != "radio" || 
+				noclick_inputtag[noclick_counter10].type != "range" || 
+				noclick_inputtag[noclick_counter10].type != "reset" || 
+				noclick_inputtag[noclick_counter10].type != "week") 
+				
+				{
 			        if (boarder_color_enabled == true) {
                     noclick_inputtag[noclick_counter10].style.borderColor = boarder_color;
 					}
-					else {
+					else if (boarder_color_enabled == false) {
 	                noclick_inputtag[noclick_counter10].style.borderColor = "";				
 					}
 					if (noclick_font_text_color_preference == true) {
 					noclick_inputtag[noclick_counter10].style.color = noclick_font_text_color;
 					}
-					else {
+					else if (noclick_font_text_color_preference == false) {
 					noclick_inputtag[noclick_counter10].style.color = "";
 					}
 					if (noclick_element_background_color_preference == true) {
 					noclick_inputtag[noclick_counter10].style.backgroundColor = noclick_element_background_color;
 					}
-					else {
+					else if (noclick_element_background_color_preference == false) {
 					noclick_inputtag[noclick_counter10].style.backgroundColor = "";
 					}
 				}
@@ -61,19 +80,19 @@ for (var noclick_counter11 = 0; noclick_counter11 < noclick_textareatag.length; 
 			        if (boarder_color_enabled == true) {
                     noclick_textareatag[noclick_counter11].style.borderColor = boarder_color;
 					}
-					else {
+					else if (boarder_color_enabled == false) {
 	                noclick_textareatag[noclick_counter11].style.borderColor = "";				
 					}
 					if (noclick_font_text_color_preference == true) {
 					noclick_textareatag[noclick_counter11].style.color = noclick_font_text_color;
 					}
-					else {
+					else if (noclick_font_text_color_preference == false) {
 					noclick_textareatag[noclick_counter11].style.color = "";
 					}
 					if (noclick_element_background_color_preference == true) {
 					noclick_textareatag[noclick_counter11].style.backgroundColor = noclick_element_background_color;
 					}
-					else {
+					else if (noclick_element_background_color_preference == false) {
 					noclick_textareatag[noclick_counter11].style.backgroundColor = "";
 					}
 			}
@@ -86,9 +105,6 @@ function noclick_main() {
     for (var ncxx = 0; ncxx < noclick_textareatag.length; ncxx++) {
         //onMouseOver (ncef() sets cursor vars.|Next: cursor vars setSelectionRange[ncs, nce].|Next: 'focus()')   
         noclick_textareatag[ncxx].addEventListener("mouseover", function() {
-			if (xnoclick_saved_cursor_postion_on_type == false){
-			ncsel = 0;
-			}
             cursor_boostrap_options(xcursor_postion_selected)
             if (xcursor_postion_selected != "off") {
                 this.setSelectionRange(ncs, nce)
@@ -102,9 +118,9 @@ function noclick_main() {
             }
 			if (xcursor_postion_selected != "off") {
 			if(xnoclick_saved_cursor_postion_on_type == true) {
-			ncsel = 1;
             ncss = this.selectionStart;
             ncse = this.selectionEnd;
+            ncsel = 1;
 			}
 			}
         });
@@ -139,13 +155,13 @@ function noclick_main() {
     for (var ncx = 0; ncx < noclick_inputtag.length; ncx++) {
         //onMouseOver (ncef() sets cursor vars.|Next: cursor vars setSelectionRange[ncs, nce].|Next: 'focus()')   
         noclick_inputtag[ncx].addEventListener("mouseover", function() {
-			if (xnoclick_saved_cursor_postion_on_type == false){
+			if (xcursor_postion_selected != "off") {
+			if (xcursor_postion_selected == false){
 			ncsel = 0;
 			}
             cursor_boostrap_options(xcursor_postion_selected)
-            if (xcursor_postion_selected != "off") {
-                this.setSelectionRange(ncs, nce)
-                this.focus()
+            this.setSelectionRange(ncs, nce)
+            this.focus()
             }
         });
 
@@ -154,12 +170,10 @@ function noclick_main() {
 			if (e.keyCode == 33 || e.keyCode == 34 || e.keyCode == 35 || e.keyCode == 37) {
                 document.activeElement.blur()
             }
-			if (xcursor_postion_selected != "off") {
 			if(xnoclick_saved_cursor_postion_on_type == true) {
-			ncsel = 1;
-            ncss = this.selectionStart;
+			ncss = this.selectionStart;
             ncse = this.selectionEnd;
-			}
+			ncsel = 1;
 			}
         });
         //onClick (Store user selection in ncse and ncse|Next: ncsel = 1 because user is now selecting text)
@@ -178,7 +192,6 @@ function noclick_main() {
         //onMouseOut (String is fully selected '0'->EndOfString)
         noclick_inputtag[ncx].addEventListener("mouseout", function() {
 			if (xcursor_postion_selected != "off") {
-			
 				if (xuser_prefs_all_text_select_mouseout == true) {
 					this.setSelectionRange(0, this.value.length)
 				}

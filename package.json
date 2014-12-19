@@ -13,47 +13,57 @@
         "private-browsing": true
     },
 
-    "preferences": [{
-            "name": "font_text_color",
-            "type": "color",
-            "title": "Text Color Selection",
-            "description": "Please choose a color.",
-            "value": "#CC0000"
-        }, {
+    "preferences": [
+		   {
             "name": "font_text_color_preference",
             "type": "bool",
-            "title": "Enable Highlighting Font-Color",
-            "description": "Enable font text highlighting.",
+            "title": "Enable Changing Font Color",
+            "description": "New Font Text may be easier to see.",
             "value": true
-        }, {
+        },
+		   {
+            "name": "font_text_color",
+            "type": "color",
+            "title": "Font Color Selection",
+            "description": "Choose a Font Color.",
+            "value": "#CC0000"
+        },  
+		   {
+            "name": "element_background_color_preference",
+            "type": "bool",
+            "title": "Enables Changing Element Background Color",
+            "description": "New Background Color is the easiest to see, but can mess the view of a website, so it's been disabled by default.",
+            "value": false
+        }, 
+		
+		{
             "name": "element_background_color",
             "type": "color",
             "title": "Background Color Selection",
-            "description": "Please choose a Color.",
+            "description": "Choose a Background Color.",
             "value": "#33FFFF"
-        }, {
-            "name": "element_background_color_preference",
+        },
+		{
+            "name": "element_boarder_highlight_preference",
             "type": "bool",
-            "title": "Enable Highlighting Background",
-            "description": "Enable element background highlighting.",
-            "value": false
-        }, {
+            "title": "Enable Changing Boarder Color",
+            "description": "New Boarder Color can make seeing which elements work with NoClick easier.",
+            "value": true
+        }, 
+		
+		   {
             "name": "element_boarder_highlight_color_preference",
             "type": "color",
             "title": "Boarder Color Selection",
-            "description": "Please choose a color.",
+            "description": "Choose a Boarder Color.",
             "value": "#6a5acd"
-        }, {
-            "name": "element_boarder_highlight_preference",
-            "type": "bool",
-            "title": "Enable Highlighting Boarder",
-            "description": "Enable element boarder highlighting.",
-            "value": true
-        }, {
+        },
+
+ {
             "name": "mouseover_selected_text",
             "type": "bool",
-            "title": "clicking saves exactly clicked text as text selection until clicked or mousescroll again",
-            "description": "Enable the previously selected text option.",
+            "title": "Enable Saved Clicked Highlight Selection ",
+            "description": "When text is clicked or selected, mouseover will remember without clicking again.",
             "value": true
         }, {
             "name": "all_text_select_mouseout",
@@ -65,15 +75,15 @@
 		{
             "name": "saved_cursor_postion_on_type",
             "type": "bool",
-            "title": "last cursor position is user's last typed character",
-            "description": "Save last character as last cursor position..",
+            "title": "Enable Last typed character selection",
+            "description": "Saves last character as last cursor position.",
             "value": true
         },
 		{
             "name": "default_cursor_postion",
             "type": "radio",
-            "title": "Default Cursor Selection",
-            "description": "Where do you always want to place the cursor? ",
+            "title": "Select a Cursor Selection Default",
+            "description": "Where to always place the cursor?",
             "value": "Alternate",
             "options": [{
                 "value": "Begin",
