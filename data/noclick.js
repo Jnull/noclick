@@ -6,9 +6,9 @@ var xall_text_select_mouseout;
 var xuser_prefs_mouseover_selected_text;
 var xuser_prefs_all_text_select_mouseout;
 var xnoclick_saved_cursor_postion_on_type;
-//receive all user saved preferences on initial start
+var on_context_menu_do_not_mouse_out; 
+//receive all user saved preferences on initial start and anytime an option is selected (currently from NoClick add-ons options page)
 self.port.on("send_all_prefrences_to_user", function(
-	
         boarder_color_enabled,
         boarder_color,
         cursor_postion_selected,
@@ -19,7 +19,6 @@ self.port.on("send_all_prefrences_to_user", function(
         noclick_element_background_color,
         noclick_element_background_color_preference,
 		noclick_saved_cursor_postion_on_type)
-
 {
         xcursor_postion_selected = cursor_postion_selected;
         xuser_prefs_mouseover_selected_text = user_prefs_mouseover_selected_text;
@@ -137,10 +136,16 @@ function noclick_main() {
             }
 			}
         });
+		//onContextMenu set a var so onMouseOut doesn't fire breaking selection 
+		noclick_textareatag[ncxx].addEventListener("contextmenu", function() {
+			on_context_menu_do_not_mouse_out = true;
+		})
         //onMouseOut (String is fully selected '0'->EndOfString)
         noclick_textareatag[ncxx].addEventListener("mouseout", function() {
-				if (xuser_prefs_all_text_select_mouseout == true) {
-					this.setSelectionRange(0, this.value.length)
+			if (xcursor_postion_selected != "off") {
+				if (on_context_menu_do_not_mouse_out != true) {
+					this.setSelectionRange(0, this.value.length);
+				}
 				}
         });
         //onMouseScroll (ncsel = '0' to put user in aNoSelectionState|Next: setSelectionRange(EndOfString,EndOfString) 
@@ -189,14 +194,20 @@ function noclick_main() {
             }
 			}
         });
+		//onContextMenu set a var so onMouseOut doesn't fire breaking selection 
+		noclick_inputtag[ncx].addEventListener("contextmenu", function() {
+			on_context_menu_do_not_mouse_out = true;
+		})
+		
         //onMouseOut (String is fully selected '0'->EndOfString)
         noclick_inputtag[ncx].addEventListener("mouseout", function() {
 			if (xcursor_postion_selected != "off") {
-				if (xuser_prefs_all_text_select_mouseout == true) {
-					this.setSelectionRange(0, this.value.length)
+				if (on_context_menu_do_not_mouse_out != true) {
+					this.setSelectionRange(0, this.value.length);
 				}
-			}
+				}
         });
+		
         //onMouseScroll (ncsel = '0' to put user in aNoSelectionState|Next: setSelectionRange(EndOfString,EndOfString) 
         noclick_inputtag[ncx].addEventListener("DOMMouseScroll", function() {
             ncsel = 0;
