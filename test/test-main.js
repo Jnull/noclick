@@ -10,3 +10,4 @@ exports["test main async"] = function(assert, done) {
 };
 
 require("sdk/test").run(exports);
+

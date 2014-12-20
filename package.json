@@ -5,7 +5,7 @@
     "author": "Jared Null",
     "contributors": ["Don", "Dhaval Katrodiya", "co222", "tumpio", "Doesnt Matter", "Faktor12"],
     "license": "GPLv3",
-    "version": "2.6",
+    "version": "2.7",
     "homepage": "http://www.jarednull.com",
     "icon": "img\\blueswip48.png",
     "icon64": "img\\blueswip64.png",
@@ -13,45 +13,41 @@
         "private-browsing": true
     },
 
-    "preferences": [
-		   {
+    "preferences": [{
             "name": "font_text_color_preference",
             "type": "bool",
             "title": "Enable Changing Font Color",
             "description": "New Font Text may be easier to see.",
             "value": true
-        },
-		   {
+        }, {
             "name": "font_text_color",
             "type": "color",
             "title": "Font Color Selection",
             "description": "Choose a Font Color.",
             "value": "#CC0000"
-        },  
-		   {
+        }, {
             "name": "element_background_color_preference",
             "type": "bool",
             "title": "Enables Changing Element Background Color",
             "description": "New Background Color is the easiest to see, but can mess the view of a website, so it's been disabled by default.",
             "value": false
-        }, 
-		
-		{
+        },
+
+        {
             "name": "element_background_color",
             "type": "color",
             "title": "Background Color Selection",
             "description": "Choose a Background Color.",
             "value": "#33FFFF"
-        },
-		{
+        }, {
             "name": "element_boarder_highlight_preference",
             "type": "bool",
             "title": "Enable Changing Boarder Color",
             "description": "New Boarder Color can make seeing which elements work with NoClick easier.",
             "value": true
-        }, 
-		
-		   {
+        },
+
+        {
             "name": "element_boarder_highlight_color_preference",
             "type": "color",
             "title": "Boarder Color Selection",
@@ -59,7 +55,7 @@
             "value": "#6a5acd"
         },
 
- {
+        {
             "name": "mouseover_selected_text",
             "type": "bool",
             "title": "Enable Saved Clicked Highlight Selection ",
@@ -71,15 +67,13 @@
             "title": "Select All Text on MouseOut",
             "description": "Enable selecting all text on mouseout.",
             "value": true
-        },
-		{
+        }, {
             "name": "saved_cursor_postion_on_type",
             "type": "bool",
             "title": "Enable Last typed character selection",
             "description": "Saves last character as last cursor position.",
             "value": true
-        },
-		{
+        }, {
             "name": "default_cursor_postion",
             "type": "radio",
             "title": "Select a Cursor Selection Default",
