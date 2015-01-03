@@ -1,0 +1,5 @@
+Services.wm.getMostRecentWindow('navigator:browser').openAboutDialog()
+gURLBar.addEventListener("mouseover", console.log(111), false);
+		
+
+BrowserSearch.searchBar.openSuggestionsPanel(
