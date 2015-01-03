@@ -14,6 +14,24 @@
     },
 
     "preferences": [{
+            "name": "tab_focus_switching_enabled",
+            "type": "bool",
+            "title": "Enable Tab Switching Focus",
+            "description": "Enable the ability to hover over tabs to switch to them.",
+            "value": true
+        }, {
+            "name": "url_focus_enabled",
+            "type": "bool",
+            "title": "Enable URL Box Auto Selection",
+            "description": "Selects URL box text automatically on hover.",
+            "value": true
+        }, {
+            "name": "search_focus_enabled",
+            "type": "bool",
+            "title": "Enable Search Auto Selection",
+            "description": "Selects search box text automatically on hover.",
+            "value": true
+        }, {
             "name": "font_text_color_preference",
             "type": "bool",
             "title": "Enable Changing Font Color",
@@ -31,9 +49,7 @@
             "title": "Enables Changing Element Background Color",
             "description": "New Background Color is the easiest to see, but can mess the view of a website, so it's been disabled by default.",
             "value": false
-        },
-
-        {
+        }, {
             "name": "element_background_color",
             "type": "color",
             "title": "Background Color Selection",
@@ -45,17 +61,13 @@
             "title": "Enable Changing Boarder Color",
             "description": "New Boarder Color can make seeing which elements work with NoClick easier.",
             "value": true
-        },
-
-        {
+        }, {
             "name": "element_boarder_highlight_color_preference",
             "type": "color",
             "title": "Boarder Color Selection",
             "description": "Choose a Boarder Color.",
             "value": "#6a5acd"
-        },
-
-        {
+        }, {
             "name": "mouseover_selected_text",
             "type": "bool",
             "title": "Enable Saved Clicked Highlight Selection ",

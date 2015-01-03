@@ -1,5 +1,6 @@
 //default variables declaration on first run 
 var noclick_inputtag = document.getElementsByTagName("input");
+var noclick_selecttag = document.getElementsByTagName("select");
 var noclick_textareatag = document.getElementsByTagName("textarea");
 var xcursor_postion_selected;
 var xall_text_select_mouseout;
@@ -7,6 +8,8 @@ var xuser_prefs_mouseover_selected_text;
 var xuser_prefs_all_text_select_mouseout;
 var xnoclick_saved_cursor_postion_on_type;
 var on_context_menu_do_not_mouse_out;
+var ncs, nce;
+var ncss, ncee;
 //receive all user saved preferences on initial start and anytime an option is selected (currently from NoClick add-ons options page)
 self.port.on("send_all_prefrences_to_user", function(
         boarder_color_enabled,
@@ -74,121 +77,144 @@ self.port.on("send_all_prefrences_to_user", function(
     })
     //noclick main function()
 function noclick_main() {
+    //autoshow select lists for tags 
+    for (var ncxs = 0; ncxs < noclick_selecttag.length; ncxs++) {
+        noclick_selecttag[ncxs].addEventListener("mouseover", function() {
+            this.size = 5;
+        });
+        noclick_selecttag[ncxs].addEventListener("mouseout", function() {
+            this.size = 1;
+        });
+    }
 
-        //textarea tags for loop through noclick_textareatag
-        for (var ncxx = 0; ncxx < noclick_textareatag.length; ncxx++) {
-            //onMouseOver (ncef() sets cursor vars.|Next: cursor vars setSelectionRange[ncs, nce].|Next: 'focus()')   
-            noclick_textareatag[ncxx].addEventListener("mouseover", function() {
-                cursor_boostrap_options(xcursor_postion_selected)
-                if (xcursor_postion_selected != "off") {
-                    this.setSelectionRange(ncs, nce)
-                    this.focus()
-                }
-            });
-            //onkeyup listens for: pageup, pagedown, end, or home to blur() this active element (this is a fix for input boxes retaining focus from page scrolling, why does it do that?))
-            noclick_textareatag[ncxx].addEventListener("keyup", function() {
-                if (e.keyCode == 33 || e.keyCode == 34 || e.keyCode == 35 || e.keyCode == 37) {
-                    document.activeElement.blur()
-                }
-                if (xcursor_postion_selected != "off") {
-                    if (xnoclick_saved_cursor_postion_on_type == true) {
-                        ncss = this.selectionStart;
-                        ncse = this.selectionEnd;
-                        ncsel = 1;
-                    }
-                }
-            });
-            //onClick (Store user selection in ncse and ncse|Next: ncsel = 1 because user is now selecting text)
-            noclick_textareatag[ncxx].addEventListener("click", function() {
-                if (xcursor_postion_selected != "off") {
+    //check checkbox input tags 
+    for (var ncxc = 0; ncxc < noclick_inputtag.length; ncxc++) {
+        noclick_inputtag[ncxc].addEventListener("mouseover", function() {
+            if (this.checked) {
+                this.checked = false;
+            } else {
+                this.checked = true;
+            }
+        })
+    }
 
-                    if (xuser_prefs_mouseover_selected_text == true) {
-                        ncss = this.selectionStart;
-                        ncse = this.selectionEnd;
-                        ncsel = 1;
-                    } else if (xuser_prefs_mouseover_selected_text == false) {
-                        ncsel = 0;
-                    }
-                }
-            });
-            //onContextMenu set a var so onMouseOut doesn't fire breaking selection 
-            noclick_textareatag[ncxx].addEventListener("contextmenu", function() {
-                    on_context_menu_do_not_mouse_out = true;
-                })
-                //onMouseOut (String is fully selected '0'->EndOfString)
-            noclick_textareatag[ncxx].addEventListener("mouseout", function() {
-                if (xcursor_postion_selected != "off") {
-                    if (on_context_menu_do_not_mouse_out != true) {
-                        this.setSelectionRange(0, this.value.length);
-                    }
-                }
-            });
-            //onMouseScroll (ncsel = '0' to put user in aNoSelectionState|Next: setSelectionRange(EndOfString,EndOfString) 
-            noclick_textareatag[ncxx].addEventListener("DOMMouseScroll", function() {
-                ncsel = 0;
-                this.blur()
-                this.setSelectionRange(this.value.length, this.value.length)
-            });
-        }
-        //input tags for loop through noclick_inputtag
-        for (var ncx = 0; ncx < noclick_inputtag.length; ncx++) {
-            //onMouseOver (ncef() sets cursor vars.|Next: cursor vars setSelectionRange[ncs, nce].|Next: 'focus()')   
-            noclick_inputtag[ncx].addEventListener("mouseover", function() {
-                if (xcursor_postion_selected != "off") {
-                    if (xcursor_postion_selected == false) {
-                        ncsel = 0;
-                    }
-                    cursor_boostrap_options(xcursor_postion_selected)
-                    this.setSelectionRange(ncs, nce)
-                    this.focus()
-                }
-            });
-            //onkeyup listens for: pageup, pagedown, end, or home to blur() this active element (this is a fix for input boxes retaining focus from page scrolling, why does it do that?))
-            noclick_inputtag[ncx].addEventListener("keyup", function(e) {
-                if (e.keyCode == 33 || e.keyCode == 34 || e.keyCode == 35 || e.keyCode == 37) {
-                    document.activeElement.blur()
-                }
+    //textarea tags for loop through noclick_textareatag
+    for (var ncxx = 0; ncxx < noclick_textareatag.length; ncxx++) {
+        //onMouseOver (ncef() sets cursor vars.|Next: cursor vars setSelectionRange[ncs, nce].|Next: 'focus()')   
+        noclick_textareatag[ncxx].addEventListener("mouseover", function() {
+            cursor_boostrap_options(xcursor_postion_selected)
+            if (xcursor_postion_selected != "off") {
+                this.setSelectionRange(ncs, nce)
+                this.focus()
+            }
+        });
+        //onkeyup listens for: pageup, pagedown, end, or home to blur() this active element (this is a fix for input boxes retaining focus from page scrolling, why does it do that?))
+        noclick_textareatag[ncxx].addEventListener("keyup", function() {
+            if (e.keyCode == 33 || e.keyCode == 34 || e.keyCode == 35 || e.keyCode == 37) {
+                document.activeElement.blur()
+            }
+            if (xcursor_postion_selected != "off") {
                 if (xnoclick_saved_cursor_postion_on_type == true) {
                     ncss = this.selectionStart;
                     ncse = this.selectionEnd;
                     ncsel = 1;
                 }
-            });
-            //onClick (Store user selection in ncse and ncse|Next: ncsel = 1 because user is now selecting text)
-            noclick_inputtag[ncx].addEventListener("click", function() {
-                if (xcursor_postion_selected != "off") {
+            }
+        });
+        //onClick (Store user selection in ncse and ncse|Next: ncsel = 1 because user is now selecting text)
+        noclick_textareatag[ncxx].addEventListener("click", function() {
+            if (xcursor_postion_selected != "off") {
 
-                    if (xuser_prefs_mouseover_selected_text == true) {
-                        ncss = this.selectionStart;
-                        ncse = this.selectionEnd;
-                        ncsel = 1;
-                    } else if (xuser_prefs_mouseover_selected_text == false) {
-                        ncsel = 0;
-                    }
+                if (xuser_prefs_mouseover_selected_text == true) {
+                    ncss = this.selectionStart;
+                    ncse = this.selectionEnd;
+                    ncsel = 1;
+                } else if (xuser_prefs_mouseover_selected_text == false) {
+                    ncsel = 0;
                 }
-            });
-            //onContextMenu set a var so onMouseOut doesn't fire breaking selection 
-            noclick_inputtag[ncx].addEventListener("contextmenu", function() {
+            }
+        });
+        //onContextMenu set a var so onMouseOut doesn't fire breaking selection 
+        noclick_textareatag[ncxx].addEventListener("contextmenu", function() {
                 on_context_menu_do_not_mouse_out = true;
             })
-
             //onMouseOut (String is fully selected '0'->EndOfString)
-            noclick_inputtag[ncx].addEventListener("mouseout", function() {
-                if (xcursor_postion_selected != "off") {
-                    if (on_context_menu_do_not_mouse_out != true) {
-                        this.setSelectionRange(0, this.value.length);
-                    }
+        noclick_textareatag[ncxx].addEventListener("mouseout", function() {
+            if (xcursor_postion_selected != "off") {
+                if (on_context_menu_do_not_mouse_out != true) {
+                    this.setSelectionRange(0, this.value.length);
                 }
-            });
-            //onMouseScroll (ncsel = '0' to put user in aNoSelectionState|Next: setSelectionRange(EndOfString,EndOfString) 
-            noclick_inputtag[ncx].addEventListener("DOMMouseScroll", function() {
-                ncsel = 0;
-                this.blur()
-                this.setSelectionRange(this.value.length, this.value.length)
-            });
-        }
+            }
+        });
+        //onMouseScroll (ncsel = '0' to put user in aNoSelectionState|Next: setSelectionRange(EndOfString,EndOfString) 
+        noclick_textareatag[ncxx].addEventListener("DOMMouseScroll", function() {
+            ncsel = 0;
+            this.blur()
+            this.setSelectionRange(this.value.length, this.value.length) //this needs to be updated to pull from user addon options. 
+        });
     }
-    //Cursor Logic 
+    //input tags for loop through noclick_inputtags
+    for (var ncx = 0; ncx < noclick_inputtag.length; ncx++) {
+        //onMouseOver (ncef() sets cursor vars.|Next: cursor vars setSelectionRange[ncs, nce].|Next: 'focus()')   
+        noclick_inputtag[ncx].addEventListener("mouseover", function() {
+            if (xcursor_postion_selected != "off") {
+                if (xcursor_postion_selected == false) {
+                    ncsel = 0;
+                }
+                cursor_boostrap_options(xcursor_postion_selected)
+                this.setSelectionRange(ncs, nce)
+                this.focus()
+            }
+        });
+
+
+        //onkeyup listens for: pageup, pagedown, end, or home to blur() this active element (this is a fix for input boxes retaining focus from page scrolling, why does it do that?))
+        noclick_inputtag[ncx].addEventListener("keyup", function(e) {
+            if (e.keyCode == 33 || e.keyCode == 34 || e.keyCode == 35 || e.keyCode == 37) {
+                document.activeElement.blur()
+            }
+            if (xnoclick_saved_cursor_postion_on_type == true) {
+                ncss = this.selectionStart;
+                ncse = this.selectionEnd;
+                ncsel = 1;
+            }
+        });
+        //onClick (Store user selection in ncse and ncse|Next: ncsel = 1 because user is now selecting text)
+        noclick_inputtag[ncx].addEventListener("click", function() {
+            if (xcursor_postion_selected != "off") {
+
+                if (xuser_prefs_mouseover_selected_text == true) {
+                    ncss = this.selectionStart;
+                    ncse = this.selectionEnd;
+                    ncsel = 1;
+                } else if (xuser_prefs_mouseover_selected_text == false) {
+                    ncsel = 0;
+                }
+            }
+        });
+        //onContextMenu set a var so onMouseOut doesn't fire breaking selection 
+        noclick_inputtag[ncx].addEventListener("contextmenu", function() {
+            on_context_menu_do_not_mouse_out = true;
+        })
+
+        //onMouseOut (String is fully selected '0'->EndOfString)
+        noclick_inputtag[ncx].addEventListener("mouseout", function() {
+            if (xcursor_postion_selected != "off") {
+                if (on_context_menu_do_not_mouse_out != true) {
+                    this.setSelectionRange(0, this.value.length);
+                }
+            }
+        });
+        //onMouseScroll (ncsel = '0' to put user in aNoSelectionState|Next: setSelectionRange(EndOfString,EndOfString) 
+        noclick_inputtag[ncx].addEventListener("DOMMouseScroll", function() {
+            ncsel = 0;
+            this.blur()
+            this.setSelectionRange(this.value.length, this.value.length)
+        });
+    }
+}
+
+//Cursor Logic 
 var ncsel = 0; //No text is selected - Used in function ncsf()
 var ncf = 1; //EndOfString = 1, StartOfString = 0 - Used in function ncsf()
 function cursor_boostrap_options(xcursor_postion_selected) {
@@ -216,3 +242,5 @@ function cursor_boostrap_options(xcursor_postion_selected) {
     }
 }
 noclick_main()
+
+//better noclick http://www.nczonline.net/blog/2009/06/30/event-delegation-in-javascript/
