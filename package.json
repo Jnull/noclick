@@ -5,7 +5,7 @@
     "author": "Jared Null",
     "contributors": ["Don", "Dhaval Katrodiya", "co222", "tumpio", "Doesnt Matter", "Faktor12"],
     "license": "GPLv3",
-    "version": "3.1",
+    "version": "3.6.1",
     "homepage": "http://www.jarednull.com",
     "icon": "img\\blueswip48.png",
     "icon64": "img\\blueswip64.png",
@@ -42,6 +42,14 @@
             "title": "Enable Tab Switching Focus",
             "description": "Enable the ability to hover over tabs to switch to them.",
             "value": true
+        },
+
+        {
+            "name": "tab_focus_switching_delay",
+            "type": "integer",
+            "description": "Delay is in miliseconds",
+            "value": 250,
+            "title": "Tab Switching Focus Delay"
         },
         {
             "name": "url_focus_enabled",
@@ -100,7 +108,7 @@
             "value": "#6a5acd"
         },
         {
-            "name": "mouseover_selected_text",
+            "name": "mouse-over_selected_text",
             "type": "bool",
             "title": "Enable Saved Clicked Highlight Selection ",
             "description": "When text is clicked or selected, mouseover will remember without clicking again.",

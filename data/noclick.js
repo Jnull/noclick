@@ -83,8 +83,10 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
         });
         //blur active element if buttons up, down, end and home are pressed
         noclick_textareatag[ncxx].addEventListener("keyup", function () {
-            if (e.keyCode == 33 || e.keyCode == 34 || e.keyCode == 35 || e.keyCode == 37) {
-                document.activeElement.blur()
+            //(33) is PageUp, (34) is PageDown, (35) is End, (36) is Home, (37) is ArrowUp, (40) is ArrowDown,
+            if ([33,34,35,36,38,40].indexOf(e.keyCode) > -1) {
+                document.activeElement.blur();
+                //console.log(e.keyCode)
             }
             if (noclick_cursor_postion_selected != "off") {
                 if (noclick_saved_cursor_postion_on_type) {
@@ -98,10 +100,11 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
         noclick_textareatag[ncxx].addEventListener("click", function () {
             if (noclick_cursor_postion_selected != "off") {
                 ncsel ^= false; //Was flipper is real?
-                if (noclick_mouse_over_selected_text) {
+                ncsel = 1;
+                //if (noclick_mouse_over_selected_text) {
                     ncss = this.selectionStart;
                     ncse = this.selectionEnd;
-                    }
+                    //}
             }
         });
         //onContextMenu (should remove listeners instead of boolean)
@@ -132,13 +135,15 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
                 }
                 cursor_boostrap_options(noclick_cursor_postion_selected);
                 this.setSelectionRange(ncs, nce);
-                this.focus()
+                this.focus();
             }
         });
         //blur active element if buttons up, down, end and home are pressed
         noclick_inputtag[ncx].addEventListener("keyup", function (e) {
-            if (e.keyCode == 33 || e.keyCode == 34 || e.keyCode == 35 || e.keyCode == 37) {
-                document.activeElement.blur()
+            //(33) is PageUp, (34) is PageDown, (35) is End, (36) is Home, (37) is ArrowUp, (40) is ArrowDown,
+            if ([33,34,35,36,38,40].indexOf(e.keyCode) > -1) {
+                document.activeElement.blur();
+                //console.log(e.keyCode)
             }
             if (noclick_saved_cursor_postion_on_type) {
                 ncss = this.selectionStart;
@@ -146,16 +151,19 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
                 ncsel = 1;
             }
         });
+
         //onClick (Store Selection)
         noclick_inputtag[ncx].addEventListener("click", function () {
             if (noclick_cursor_postion_selected != "off") {
                 ncsel ^= false; //Was flipper the dolphin real?
+               //console.log(ncsel);
                 if (noclick_mouse_over_selected_text) {
                     ncss = this.selectionStart;
                     ncse = this.selectionEnd;
                 }
             }
         });
+
         //onContextMenu (Change to removeEventListener in the future)
         noclick_inputtag[ncx].addEventListener("contextmenu", function () {
             on_context_menu_do_not_mouse_out = true;
@@ -203,3 +211,7 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
 
     }
 });
+
+
+document.body.addEventListener('mouseover', function() {console.log("WOOOHOOOOOO")});
+
