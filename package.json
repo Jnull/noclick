@@ -1,21 +1,21 @@
 {
     "title": "NoClick",
+    "main": "lib/main.js",
     "id": "jid1-qcmz2yMJ3oOBpA@jetpack",
     "description": "A way to save clicks on any website by allowing a user to harness hover functionality for all user input fields.",
     "author": "Jared Null",
-    "contributors": ["Don", "Dhaval Katrodiya", "co222", "tumpio", "Doesnt Matter", "Faktor12"],
     "license": "GPLv3",
-    "version": "3.6.1",
+    "version": "3.6.3",
     "homepage": "http://www.jarednull.com",
     "icon": "img\\blueswip48.png",
     "icon64": "img\\blueswip64.png",
     "permissions": {
         "private-browsing": true
     },
-
     "preferences": [
 
         {
+            "hidden": true,
             "name": "dropdown_autoshow_enabled",
             "type": "bool",
             "title": "Enable Drop-Down Auto Show",
@@ -37,6 +37,7 @@
             "value": true
         },
         {
+            "hidden": true,
             "name": "tab_focus_switching_enabled",
             "type": "bool",
             "title": "Enable Tab Switching Focus",
@@ -45,6 +46,7 @@
         },
 
         {
+            "hidden": true,
             "name": "tab_focus_switching_delay",
             "type": "integer",
             "description": "Delay is in miliseconds",
@@ -52,18 +54,20 @@
             "title": "Tab Switching Focus Delay"
         },
         {
+            "hidden": true,
             "name": "url_focus_enabled",
             "type": "bool",
             "title": "Enable URL Box Auto Selection",
             "description": "Selects URL box text automatically on hover.",
-            "value": true
+            "value": false
         },
         {
+            "hidden": true,
             "name": "search_focus_enabled",
             "type": "bool",
             "title": "Enable Search Auto Selection",
             "description": "Selects search box text automatically on hover.",
-            "value": true
+            "value": false
         },
         {
             "name": "font_text_color_preference",
@@ -159,7 +163,7 @@
             "name": "boardercolorenable",
             "title": "Enable Element Text Color",
             "description": "Enable color highlighting for all input elements.",
-            "value": true
+            "value": false
         },
         {
             "hidden": true,
