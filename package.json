@@ -1,11 +1,11 @@
 {
     "title": "NoClick",
     "main": "lib/main.js",
-    "id": "jid1-qcmz2yMJ3oOBpA@jetpack",
+    "id": "jid1-qcmz2yMJ3oOBpA",
     "description": "A way to save clicks on any website by allowing a user to harness hover functionality for all user input fields.",
     "author": "Jared Null",
     "license": "GPLv3",
-    "version": "3.6.5",
+    "version": "3.6.7",
     "homepage": "http://www.jarednull.com",
     "icon": "img\\blueswip48.png",
     "icon64": "img\\blueswip64.png",
@@ -37,7 +37,6 @@
             "value": true
         },
         {
-            "hidden": true,
             "name": "tab_focus_switching_enabled",
             "type": "bool",
             "title": "Enable Tab Switching Focus",

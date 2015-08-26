@@ -100,7 +100,7 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
             });
 
             //onContextMenu (Change to removeEventListener in the future)
-            noclick_inputtag[ncx].addEventListener("contextmenu", function () {
+            noclick_textareatag[ncxx].addEventListener("contextmenu", function () {
                 on_context_menu_do_not_mouse_out = true;
             });
         })(ncf = 1, ncss = 0, ncse = 0, ncsel = 0);
