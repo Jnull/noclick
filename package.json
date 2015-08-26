@@ -1,7 +1,7 @@
 {
     "title": "NoClick",
     "main": "lib/main.js",
-    "id": "jid1-qcmz2yMJ3oOBpA",
+    "id": "jid1-qcmz2yMJ3oOBpA@jetpack",
     "description": "A way to save clicks on any website by allowing a user to harness hover functionality for all user input fields.",
     "author": "Jared Null",
     "license": "GPLv3",
