@@ -37,6 +37,7 @@
             "value": true
         },
         {
+            "hidden": true,
             "name": "tab_focus_switching_enabled",
             "type": "bool",
             "title": "Enable Tab Switching Focus",

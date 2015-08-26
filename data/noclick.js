@@ -84,21 +84,20 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
                     this.focus();
                 }
 
-                //blur active element if buttons up, down, end and home are pressed
-                noclick_textareatag[ncxx].addEventListener("keyup", function (e) {
-                    //(33) is PageUp, (34) is PageDown, (35) is End, (36) is Home, (37) is ArrowUp, (40) is ArrowDown,
-                    if ([33, 34, 35, 36, 38, 40].indexOf(e.keyCode) > -1) {
-                        document.activeElement.blur();
-                    }
-                    if (noclick_saved_cursor_postion_on_type) {
-                        ncss = this.selectionStart;
-                        ncse = this.selectionEnd;
-                        ncsel = 1;
-                    }
-                });
-
             });
 
+            //blur active element if buttons up, down, end and home are pressed
+            noclick_textareatag[ncxx].addEventListener("keyup", function (e) {
+                //(33) is PageUp, (34) is PageDown, (35) is End, (36) is Home, (37) is ArrowUp, (40) is ArrowDown,
+                if ([33, 34, 35, 36, 38, 40].indexOf(e.keyCode) > -1) {
+                    document.activeElement.blur();
+                }
+                if (noclick_saved_cursor_postion_on_type) {
+                    ncss = this.selectionStart;
+                    ncse = this.selectionEnd;
+                    ncsel = 1;
+                }
+            });
 
             //onContextMenu (Change to removeEventListener in the future)
             noclick_inputtag[ncx].addEventListener("contextmenu", function () {
@@ -160,20 +159,21 @@ self.port.on("send_all_prefrences_to_user", function (boarder_color_enabled, boa
                     this.focus();
                 }
 
-                //blur active element if buttons up, down, end and home are pressed
-                noclick_inputtag[ncx].addEventListener("keyup", function (e) {
-                    //(33) is PageUp, (34) is PageDown, (35) is End, (36) is Home, (37) is ArrowUp, (40) is ArrowDown,
-                    if ([33, 34, 35, 36, 38, 40].indexOf(e.keyCode) > -1) {
-                        document.activeElement.blur();
-                    }
-                    if (noclick_saved_cursor_postion_on_type) {
-                        ncss = this.selectionStart;
-                        ncse = this.selectionEnd;
-                        ncsel = 1;
-                    }
-                });
-
             });
+
+            //blur active element if buttons up, down, end and home are pressed
+            noclick_inputtag[ncx].addEventListener("keyup", function (e) {
+                //(33) is PageUp, (34) is PageDown, (35) is End, (36) is Home, (37) is ArrowUp, (40) is ArrowDown,
+                if ([33, 34, 35, 36, 38, 40].indexOf(e.keyCode) > -1) {
+                    document.activeElement.blur();
+                }
+                if (noclick_saved_cursor_postion_on_type) {
+                    ncss = this.selectionStart;
+                    ncse = this.selectionEnd;
+                    ncsel = 1;
+                }
+            });
+
 
         })(ncf = 1, ncss = 0, ncse = 0, ncsel = 0);
 
